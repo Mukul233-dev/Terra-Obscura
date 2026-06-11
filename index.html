@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terra Obscura — Hidden Knowledge of the Ancient World</title>
+  <meta name="description" content="An immersive 3D globe exploration experience uncovering ancient mysteries, lost civilizations, and hidden places scattered across the Earth.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ═══ Globe Viewport ═══ -->
+  <div id="globe-viewport"></div>
+
+  <!-- ═══ Ambient Effects ═══ -->
+  <div class="grain-overlay"></div>
+  <div class="radial-fade"></div>
+  <canvas id="dust-canvas"></canvas>
+
+  <!-- ═══ Navigation Bar ═══ -->
+  <nav class="nav-bar" id="nav-bar">
+    <div class="nav-brand">
+      <span class="brand-icon">◈</span>
+      <div class="brand-text">
+        <h1>TERRA OBSCURA</h1>
+        <span class="brand-sub">Ancient Knowledge Archive</span>
+      </div>
+    </div>
+    <div class="nav-actions">
+      <button class="nav-btn" id="btn-filter" aria-label="Filter locations">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 6h18M7 12h10M10 18h4"/></svg>
+        <span>Filter</span>
+      </button>
+      <button class="nav-btn" id="btn-arcs" aria-label="Toggle connections">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="5" cy="12" r="2"/><circle cx="19" cy="12" r="2"/><path d="M7 12h10"/></svg>
+        <span>Links</span>
+      </button>
+      <button class="nav-btn" id="btn-reset" aria-label="Reset globe view">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 12a9 9 0 1 1 3 6.7"/><path d="M3 21v-6h6"/></svg>
+        <span>Reset</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ═══ Category Filter Drawer ═══ -->
+  <div class="filter-drawer" id="filter-drawer">
+    <div class="filter-header">Categories</div>
+    <div class="filter-list" id="filter-list"></div>
+  </div>
+
+  <!-- ═══ Location Ticker (bottom) ═══ -->
+  <div class="ticker-bar" id="ticker-bar">
+    <div class="ticker-stat">
+      <span class="ticker-num" id="ticker-count">10</span>
+      <span class="ticker-label">sites mapped</span>
+    </div>
+    <div class="ticker-divider"></div>
+    <div class="ticker-hint">
+      <span class="ticker-dot"></span>
+      Click a pin to explore
+    </div>
+    <div class="ticker-divider"></div>
+    <div class="ticker-coord" id="ticker-coord">30.0°N · 35.0°E</div>
+  </div>
+
+  <!-- ═══ Detail Panel (slide-in) ═══ -->
+  <div class="panel-shade" id="panel-shade"></div>
+  <aside class="detail-panel" id="detail-panel">
+    <div class="panel-scroll" id="panel-scroll">
+      <!-- dynamically populated -->
+    </div>
+  </aside>
+
+  <!-- ═══ Tooltip (on hover) ═══ -->
+  <div class="hover-tooltip" id="hover-tooltip"></div>
+
+  <!-- ═══ Scripts (UMD/IIFE — no import map needed) ═══ -->
+  <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
+  <script src="https://unpkg.com/globe.gl@2.30.0"></script>
+  <script src="data.js"></script>
+  <script src="images_data.js"></script>
+  <script src="app.js?v=rotation-fix-1"></script>
+</body>
+</html>
